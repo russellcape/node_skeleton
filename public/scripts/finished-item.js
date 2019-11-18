@@ -1,13 +1,15 @@
 $(document).ready(function(){
 
-  $(".list").click(function() {
-    if (click) {
-      $(this).wrap("<strike>");
-        // do first click stuff
+  $('.list').click(function() {
+    const click = $(this).closest("li").addClass("checked");
+    const unclick = $(this).closest("li").removeClass("checked");
+
+
+    if ($(this).hasClass(".checked")) {
+      return unclick
     } else {
-      $(this).unwrap();
-        // do second (and beyond?) click stuff
+      return click
     }
-});
+  });
 
 });
