@@ -47,6 +47,12 @@
 .list {
   cursor: pointer;
   border: 1px solid red;
+  padding-bottom: .25em;
+  padding-top: .25em;
+}
+
+.list.checked {
+  text-decoration: line-through;
 }
 
 .list:hover {
@@ -54,7 +60,6 @@
 }
 
 .check-btns-box {
-  cursor: pointer;
   border: 1px solid red;
 }
 
@@ -68,9 +73,11 @@
 .checks-indv {
   list-style-type: none;
   border: 1px solid red;
+  padding-bottom: .25em;
+  padding-top: .25em;
 }
 
-.delete-btns {
+.delete-column {
   border: red solid 1px;
 }
 
@@ -78,6 +85,8 @@
   border: 1px solid red;
   list-style-type: none;
   padding-left: 0;
+  padding-bottom: .25em;
+  padding-top: .25em;
 }
 
 .del-btn {
