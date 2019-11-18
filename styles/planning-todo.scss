@@ -1,4 +1,4 @@
-.add-list-blank {
+.add-list-area {
   display: flex;
   flex-direction: column;
   border: 1px solid red;
@@ -73,6 +73,7 @@
 }
 
 .check-btns {
+  cursor: pointer;
   padding-top: 0%;
   padding-bottom: 0%;
   background: none;
@@ -85,6 +86,7 @@
 }
 
 .delete-btn {
+  cursor: pointer;
   background: #EA3534;
   border: none;
   padding-bottom: 0%;
@@ -99,8 +101,14 @@
   transform: scale(.9);
 }
 
-/* Style the blank div */
-.blank-div {
+// organized area
+
+
+.organized-box {
   border: 1px solid red;
-  margin: 1%;
+  width: 70%;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 2%
 }
