@@ -39,9 +39,8 @@
   width: 85%;
   margin-left: auto;
   margin-right: auto;
-  margin-top: 0%;
-  margin-bottom: 0%;
-  height: fit-content;
+  margin-top: 2%;
+  margin-bottom: 2%;
 }
 
 .list {
@@ -53,6 +52,7 @@
 
 .list.checked {
   text-decoration: line-through;
+  font-weight: bold;
 }
 
 .list:hover {
@@ -77,19 +77,7 @@
   padding-top: .25em;
 }
 
-.delete-column {
-  border: red solid 1px;
-}
-
-.delete {
-  border: 1px solid red;
-  list-style-type: none;
-  padding-left: 0;
-  padding-bottom: .25em;
-  padding-top: .25em;
-}
-
-.del-btn {
+.delete-btn {
   background: none;
   border: none;
   padding-bottom: 0%;
@@ -101,12 +89,4 @@
 .blank-div {
   border: 1px solid red;
   margin: 1%;
-}
-
-.all-elements {
-  border: 1px solid red;
-  display: flex;
-  flex-direction: row;
-  width: 100%;
-  margin: 2%;
 }
