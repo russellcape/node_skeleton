@@ -1,11 +1,14 @@
 $(document).ready(function(){
 
-  $('.list').click(function() {
+  $('.list-item').click(function() {
     if ($(this).hasClass('checked')) {
-      $(this).closest(this).removeClass("checked");
+      $(this).removeClass("checked");
+      $(this).find('.fas.fa-check').toggle('slide');
     } else {
-      $(this).closest(this).addClass("checked");
+      $(this).addClass("checked")
+      $(this).find('.fas.fa-check').toggle('slide');
     }
   });
+
 
 });
