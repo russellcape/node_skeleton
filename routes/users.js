@@ -12,7 +12,7 @@ const request = require('request');
 module.exports = (db) => {
   // ROUTER GET MAIN PAGE WHERE USER CAN MAKE A NEW TODO
   router.get("/", (req, res) => {
-    res.send("THIS IS THE LANDING PAGE");
+    res.render("../views/index.ejs");
 
     db.query(`SELECT * FROM users;`)
       .then(data => {
