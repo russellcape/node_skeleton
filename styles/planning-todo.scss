@@ -22,7 +22,12 @@
 
 .add-btn {
   cursor: pointer;
-  background: #4EAF50;
+  background: #4698ED;
+  border: none;
+}
+
+.add-btn:active {
+  transform: scale(.9);
 }
 
 /* Style the list items */
@@ -32,7 +37,7 @@
   align-items: center;
 }
 
-.list-elements {
+.list-box {
   border: 1px solid red;
   list-style-type: none;
   padding-left: 0;
@@ -43,24 +48,28 @@
   margin-bottom: 2%;
 }
 
-.list {
+.list-item {
   cursor: pointer;
-  border: 1px solid red;
   padding-bottom: .25em;
   padding-top: .25em;
-}
-
-.list.checked {
-  text-decoration: line-through;
   font-weight: bold;
 }
 
-.list:hover {
-  background: #A3A3A2;
+.list-item:nth-child(odd) {
+  background: #f9f9f9;
 }
 
-.check-btns-box {
-  border: 1px solid red;
+.fas.fa-check {
+  display: none;
+}
+
+.list-item.checked {
+  text-decoration: line-through;
+  font-weight: normal;
+}
+
+.list-item:hover {
+  background: #A3A3A2;
 }
 
 .check-btns {
@@ -68,22 +77,27 @@
   padding-bottom: 0%;
   background: none;
   border: none;
+  overflow:auto;
 }
 
-.checks-indv {
-  list-style-type: none;
-  border: 1px solid red;
-  padding-bottom: .25em;
-  padding-top: .25em;
+.check-btns:active {
+  transform: scale(.9);
 }
 
 .delete-btn {
-  background: none;
+  background: #EA3534;
   border: none;
   padding-bottom: 0%;
   padding-top: 0%;
+  padding-left: 4%;
+  padding-right: 4%;
+  margin-right: 2%;
+  float: right;
 }
 
+.delete-btn:active {
+  transform: scale(.9);
+}
 
 /* Style the blank div */
 .blank-div {
