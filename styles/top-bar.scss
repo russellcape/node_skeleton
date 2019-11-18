@@ -1,7 +1,8 @@
  .top-bar {
-  background-color: #F9A20D;
+  background-color: #F29100;
   display: flex;
   justify-content: space-between;
+  background-image: url('../images/concrete-wall-2.png');
   width: 100%;
   top: 0;
   padding: 1.5em;
@@ -11,4 +12,11 @@
 .new-item-button {
   background: none;
   border: none;
+  font-family: 'Fjalla One', sans-serif;
+  font-size: x-large;
+}
+
+.comp-name {
+  font-family: 'Fjalla One', sans-serif;
+  font-size: xx-large;
 }

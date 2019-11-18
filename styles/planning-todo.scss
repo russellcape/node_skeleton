@@ -4,7 +4,7 @@
   border: 1px solid red;
   justify-content: center;
   width: 70%;
-
+  margin: 1%;
 }
 
 /* Style the My Todo list area with form */
@@ -13,6 +13,11 @@
 .question-box {
   border: solid red 1px;
   text-align: center;
+}
+
+.todo-title {
+  margin-top: 2%;
+  margin-bottom: 2%;
 }
 
 .todos {
@@ -101,14 +106,3 @@
   transform: scale(.9);
 }
 
-// organized area
-
-
-.organized-box {
-  border: 1px solid red;
-  width: 70%;
-  text-align: center;
-  margin-left: auto;
-  margin-right: auto;
-  margin-bottom: 2%
-}

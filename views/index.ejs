@@ -26,11 +26,15 @@
     <!-- Planning Todo and List Styles -->
     <link rel="stylesheet" href="/styles/planning-todo.css" type="text/css" />
 
+    <!-- Organized Box Styles -->
+    <link rel="stylesheet" href="/styles/organized-data.css" type="text/css" />
+
     <!-- Side Bar Styles -->
     <link rel="stylesheet" href="/styles/side-bar.css" type="text/css" />
 
     <!-- Fonts CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css"/>
+    <link href='https://fonts.googleapis.com/css?family=Fjalla+One' rel='stylesheet' type='text/css'>
 
     <!-- Default Scripts -->
     <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
@@ -49,8 +53,8 @@
   <body>
 
   <nav class="top-bar">
-    <span class="comp-name">Company Name</span>
-    <button class="new-item-button">Write a new TwoDoos</button>
+    <span class="comp-name">Sham 2dU</span>
+    <button class="new-item-button">Write New TwoDoos</button>
   </nav>
 
   <section class="working-area">
@@ -90,7 +94,11 @@
         <div class="question-box">
           <h2 class="todo-title">My Too Doo List</h2>
           <input class="todos" type="text" placeholder="What are you planning?">
-        <button onclick="newElement()" class="add-btn">Add</button>
+          <button class="add-btn">Add</button>
+          <input class="due-date-text" type="text" placeholder="When should this be finished by?">
+          <button class="due-date-btn-btn">Add</button>
+          <input class="priority-text" type="text" placeholder="What are you planning?">
+          <button class="add-btn">Add</button>
         </div>
 
     <div class="check-list-delete">
