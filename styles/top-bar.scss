@@ -1,0 +1,14 @@
+ .top-bar {
+  background-color: #F9A20D;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  top: 0;
+  padding: 1.5em;
+  z-index: 25;
+}
+
+.new-item-button {
+  background: none;
+  border: none;
+}

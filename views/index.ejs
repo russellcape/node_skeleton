@@ -3,15 +3,168 @@
   <head>
     <title>Home Page</title>
 
+    <!-- Default Styles -->
     <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
     <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
     <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
 
+    <!-- Nav Styles -->
+    <link rel="stylesheet" href="/styles/top-bar.css" type="text/css" />
+
+    <!-- Planning Todo and List Styles -->
+    <link rel="stylesheet" href="/styles/planning-todo.css" type="text/css" />
+
+    <!-- Side Bar Styles -->
+    <link rel="stylesheet" href="/styles/side-bar.css" type="text/css" />
+
+    <!-- Fonts CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css"/>
+
+    <!-- Default Scripts -->
     <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
     <script type="text/javascript" src="/scripts/app.js"></script>
+
+    <!-- Category Slide Script -->
+    <script type="text/javascript" src="/scripts/category-slide.js"></script>
+
+    <!-- Striked Out Script -->
+    <script type="text/javascript" src="/scripts/finished-item.js"></script>
+
+
+
   </head>
 
   <body>
-    <h1>Hello World!</h1>
+
+  <nav class="top-bar">
+    <span class="comp-name">Company Name</span>
+    <button class="new-item-button">Write a new TwoDoos</button>
+  </nav>
+
+  <section class="working-area">
+
+    <div class="side-bar">
+      <h4 class="index-title">Things ToDo</h4>
+      <button class="cat-slide">
+        Categories
+      </button>
+      <button class="cats">
+        <i class="fas fa-film"></i>
+        Film / Series
+      </button>
+      <button class="cats">
+        <i class="fas fa-utensils"></i>
+        Restaurants
+      </button>
+      <button class="cats">
+        <i class="fas fa-book"></i>
+        Books
+      </button>
+      <button class="cats">
+        <i class="fas fa-shopping-bag"></i>
+        Products
+      </button>
+      <button class="side">
+        Due Date
+      </button>
+      <button class="side">
+        Priorities
+      </button >
+    </div>
+
+
+      <div class="add-list-blank">
+
+        <div class="question-box">
+          <h2 class="todo-title">My Too Doo List</h2>
+          <input class="todos" type="text" placeholder="What are you planning?">
+        <button onclick="newElement()" class="add-btn">Add</button>
+        </div>
+
+    <div class="check-list-delete">
+
+      <div class="check-btns-box">
+        <li class="checks-indv">
+          <button class="check-btns">
+            <i class="fas fa-check"></i>
+          </button>
+        </li>
+         <li class="checks-indv">
+          <button class="check-btns">
+            <i class="fas fa-check"></i>
+          </button>
+        </li>
+        <li class="checks-indv">
+          <button class="check-btns">
+            <i class="fas fa-check"></i>
+          </button>
+        </li>
+        <li class="checks-indv">
+          <button class="check-btns">
+            <i class="fas fa-check"></i>
+          </button>
+        </li>
+        <li class="checks-indv">
+          <button class="check-btns">
+            <i class="fas fa-check"></i>
+          </button>
+        </li>
+         <li class="checks-indv">
+          <button class="check-btns">
+            <i class="fas fa-check"></i>
+          </button>
+        </li>
+      </div>
+
+          <ul class="list-elements">
+            <li class="list">Hit the gym</li>
+            <li class="list">Pay bills</li>
+            <li class="list">Meet George</li>
+            <li class="list">Buy eggs</li>
+            <li class="list">Read a book</li>
+            <li class="list">Organize office</li>
+          </ul>
+
+      <div class="delete-btns">
+        <li class="delete">
+          <button class="del-btn">
+            <i class="fas fa-eraser"></i>
+          </button>
+        </li>
+        <li class="delete">
+          <button class="del-btn">
+            <i class="fas fa-eraser"></i>
+          </button>
+        </li>
+         <li class="delete">
+          <button class="del-btn">
+            <i class="fas fa-eraser"></i>
+          </button>
+          </li>
+          <li class="delete">
+            <button class="del-btn">
+              <i class="fas fa-eraser"></i>
+            </button>
+          </li>
+          <li class="delete">
+            <button class="del-btn">
+              <i class="fas fa-eraser"></i>
+            </button>
+          </li>
+          <li class="delete">
+            <button class="del-btn">
+              <i class="fas fa-eraser"></i>
+            </button>
+          </li>
+        </div>
+
+      </div>
+    </div>
+
+        <div class="blank-div">
+          SERGES DEW
+        </div>
+
+    </section>
   </body>
 </html>
