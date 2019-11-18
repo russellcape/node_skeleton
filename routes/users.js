@@ -7,7 +7,7 @@
 
 const express = require('express');
 const router  = express.Router();
-const { findWord } = require('../helpers/helper_functions');
+const { getCategories } = require('../helpers/get_categories');
 
 
 module.exports = (db) => {
@@ -31,10 +31,17 @@ module.exports = (db) => {
 
 
     // REMOVE THIS LATER, FOR TESTING API QUERY ONLY
-    findWord('restaurant');
+    getCategories()
+    .then(categories => {
+
+      res.send(categories);
+    });
 
 
-    res.send("THIS IS THE TODOS LIST ROUTE ARRANGED BY DATE_CREATED");
+
+    // res.send("TODOS PAGE");
+
+    // res.send(categories.key);
 
     const text = `
     SELECT description, date_due, priority
