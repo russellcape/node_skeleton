@@ -1,0 +1,112 @@
+.add-list-blank {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid red;
+  justify-content: center;
+  width: 70%;
+
+}
+
+/* Style the My Todo list area with form */
+
+
+.question-box {
+  border: solid red 1px;
+  text-align: center;
+}
+
+.todos {
+  width: 75%;
+  margin-bottom: 1.5%;
+}
+
+.add-btn {
+  cursor: pointer;
+  background: #4EAF50;
+}
+
+/* Style the list items */
+
+.check-list-delete {
+  display: flex;
+  align-items: center;
+}
+
+.list-elements {
+  border: 1px solid red;
+  list-style-type: none;
+  padding-left: 0;
+  width: 85%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 0%;
+  margin-bottom: 0%;
+  height: fit-content;
+}
+
+.list {
+  cursor: pointer;
+  border: 1px solid red;
+  padding-bottom: .25em;
+  padding-top: .25em;
+}
+
+.list.checked {
+  text-decoration: line-through;
+}
+
+.list:hover {
+  background: #A3A3A2;
+}
+
+.check-btns-box {
+  border: 1px solid red;
+}
+
+.check-btns {
+  padding-top: 0%;
+  padding-bottom: 0%;
+  background: none;
+  border: none;
+}
+
+.checks-indv {
+  list-style-type: none;
+  border: 1px solid red;
+  padding-bottom: .25em;
+  padding-top: .25em;
+}
+
+.delete-column {
+  border: red solid 1px;
+}
+
+.delete {
+  border: 1px solid red;
+  list-style-type: none;
+  padding-left: 0;
+  padding-bottom: .25em;
+  padding-top: .25em;
+}
+
+.del-btn {
+  background: none;
+  border: none;
+  padding-bottom: 0%;
+  padding-top: 0%;
+}
+
+
+/* Style the blank div */
+.blank-div {
+  border: 1px solid red;
+  margin: 1%;
+}
+
+.all-elements {
+  border: 1px solid red;
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  margin: 2%;
+}

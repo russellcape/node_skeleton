@@ -1,0 +1,42 @@
+.side-bar {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid red;
+  width: 12%;
+  margin: 1%;
+}
+
+.index-title {
+  text-align: center;
+  margin: 4%;
+  text-decoration: underline;
+}
+
+.side {
+  text-align: left;
+  padding-left: 10%;
+  margin-top: 5%;
+  margin-bottom: 5%;
+  background: none;
+  border: none;
+  width: 95%;
+}
+
+.cat-slide {
+  text-align: left;
+  padding-left: 10%;
+  margin-bottom: 5%;
+  background: none;
+  border: none;
+  width: 95%;
+}
+
+.cats{
+  font-size: 85%;
+  background: none;
+  border: none;
+  text-align: left;
+  padding-left: 16%;
+  display: none;
+  width: 95%;
+}
