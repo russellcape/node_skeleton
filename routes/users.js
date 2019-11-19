@@ -28,20 +28,13 @@ module.exports = (db) => {
   // ROUTER GET TODOS ARRANGED BY DATE CREATED ( DEFAULT )
   router.get("/todos", (req, res) => {
 
-
-
-    // REMOVE THIS LATER, FOR TESTING API QUERY ONLY
+    // FOR TESTING API QUERY ONLY
     getCategories()
     .then(categories => {
 
       res.send(categories);
     });
 
-
-
-    // res.send("TODOS PAGE");
-
-    // res.send(categories.key);
 
     const text = `
     SELECT description, date_due, priority
@@ -52,7 +45,7 @@ module.exports = (db) => {
     db.query(text, values)
       .then(data => {
         const todos = data.rows;
-        // console.log(todos);
+        console.log(todos);
       });
   });
 
