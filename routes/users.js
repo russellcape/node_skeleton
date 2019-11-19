@@ -35,7 +35,6 @@ module.exports = (db) => {
       res.send(categories);
     });
 
-
     const text = `
     SELECT description, date_due, priority
     FROM todos
@@ -98,6 +97,7 @@ module.exports = (db) => {
     res.send("THIS SHOULD BE THE ROUTE WHERE TODOS CAN BE EDITED");
   });
 
+  // Route to add new todo
   router.post("/todos", (req, res) => {
     if (!req.body) {
       res.status(400).json({ error: 'invalid request: no data in POST body'});
