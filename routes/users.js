@@ -51,42 +51,46 @@ module.exports = (db) => {
 
   // ROUTER GET TODOS ARRANGED BY PRIORITY
   router.get("/todos/priority", (req, res) => {
-    res.send("THIS IS THE TODOS LIST ROUTE ARRANGED BY PRIORITY");
 
     const text = `
     SELECT description, date_due, priority
     FROM todos
-    ORDER BY priority`;
-    const values = [];
+    ORDER BY priority DESC
+    ;`;
 
-    db.query(text, values)
-      .then(data => {
-        const todos = data.rows;
-        console.log(todos);
-      });
+    db.query(text)
+    .then(data => {
+      const todos = data.rows;
+      console.log(todos);
+      res.json(todos);
+    });
   });
 
   // ROUTER GET TODOS ARRANGED BY DUE DATE
   router.get("/categories/:id/todos", (req, res) => {
-    res.send(("THIS IS THE ORGANIZED BY CATEGORY_ID ROUTE, which is: " + req.params.id));
 
+    // I WANT THE TODOS UNDER A CERTAIN CATEGORY
+    // I can identify a todo of category X by it's category_id
+    // I can get the id of a category by asking the categories table what is it's id
     const text = `
-    SELECT categories.name
-    FROM categories
-    WHERE categories.id = $1;`;
-    const values = [`${req.params.id}`];
+    SELECT description, date_due, priority
+    FROM todos
+    JOIN categories ON todos.category_id = categories.id
+    WHERE categories.id = $1
+    ;`;
+    const values = [req.params.id];
 
 
     db.query(text, values)
-      .then(data => {
-        const categories = data.rows;
-        console.log("the category is currently: ", categories[0].name);
-        console.log("type of categories is: ", typeof categories);
-
-      })
-      .catch(error => {
-        console.log(`${error}`)
-      })
+    .then(data => {
+      const todos = data.rows;
+      console.log("the category is currently: ", todos);
+      // console.log("type of categories is: ", typeof todos);
+      res.json(todos);
+    })
+    .catch(error => {
+      console.log(`${error}`)
+    });
 
   });
 
@@ -101,8 +105,6 @@ module.exports = (db) => {
     } else {
       const todo = req.body;
     }
-
-
 
   });
 
