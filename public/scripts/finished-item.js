@@ -14,8 +14,8 @@ $(document).ready(function(){
     $(this).parent().remove()
   });
 
-  const add = document.getElementsByClassName('.list-item'); // Find the paragraph element in the page
-  add.onclick = addItem; // Add onclick function to element
+  const add = document.getElementsByClassName('.list-item');
+  add.onclick = addItem;
 
   function addItem(event) {
     $('.list-item').append('new-list-element')

@@ -5,11 +5,12 @@
   background-image: url('../images/concrete-wall-2.png');
   width: 100%;
   top: 0;
-  padding: 1.5em;
+  padding: 1.5em 0em 1.5em 0em;
   z-index: 25;
 }
 
 .new-item-button {
+  margin-right: 4%;
   background: none;
   border: none;
   font-family: 'Fjalla One', sans-serif;
@@ -17,6 +18,7 @@
 }
 
 .comp-name {
+  margin-left: 4%;
   font-family: 'Fjalla One', sans-serif;
   font-size: xx-large;
 }
