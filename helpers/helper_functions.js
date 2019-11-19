@@ -17,17 +17,22 @@ const findWord = function(word) {
     }
     // parse the body to be able to access the info we want from the query
     const queryResult = JSON.parse(body);
-    // destructure the queryResult into sseq array which is where synonyms and related words are stored
-    const [{def:[{sseq:[[sense]]}]}] = queryResult
-    // destructure to get the synonyms (syn_list) and the related words (rel_list)
-    const [,{syn_list, rel_list}] = sense;
-    // use lodash to flatten both lists to get them back as a simplified array
-    const synonyms = syn_list[0].map(word => word.wd)
-    const relative_words = _.flatten(rel_list).map(word => word.wd)
-    // merge the arrays into one array which can be used to verify which word fits in a category
-    const words = [...synonyms, ...relative_words]
-    console.log(words);
+    // destructure and return an array of words that are synonyms / related to the searched word
+    destructureResults(queryResult);
   });
 };
 
-module.exports = { findWord };
+const destructureResults = (array) => {
+  // destructure the queryResult into sseq array which is where synonyms and related words are stored
+  const [{def:[{sseq:[[sense]]}]}] = array;
+  // destructure to get the synonyms (syn_list) and the related words (rel_list)
+  const [,{syn_list, rel_list}] = sense;
+  // use lodash to flatten both lists to get them back as a simplified array
+  const synonyms = syn_list[0].map(word => word.wd)
+  const relative_words = _.flatten(rel_list).map(word => word.wd)
+  // merge the arrays into one array which can be used to verify which word fits in a category
+  const words = [...synonyms, ...relative_words]
+  return words;
+};
+
+module.exports = { findWord, destructureResults };
