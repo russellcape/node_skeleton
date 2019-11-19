@@ -56,7 +56,8 @@
       <!-- Rating Widget Script-->
       <script type="text/javascript" src="/scripts/rating-widget.js"></script>
 
-
+      <!-- Render List Items Script -->
+      <script type="text/javascript" src="/routes/renderItems.js"></script>
 
 
   </head>
@@ -138,7 +139,7 @@
 
 
       <ul class="list-box">
-        <li class="list-item">
+        <!-- <li class="list-item">
           <button class="check-btns">
             <i class="fas fa-check"></i>
           </button>
@@ -180,10 +181,12 @@
           </button>
           Read a book
           <button class="delete-btn">
-            <i class="fas fa-eraser"></i>
-          </button>
-        </li>
-        <li class="list-item">
+            <i class="fas fa-eraser">let checkIcon = $(`<i>`).addClass('fas fa-check')
+  let eraserIcon = $(`<i>`).addClass('fas fa-eraser')
+  let deleteBtn = $(`<button>`).addClass('delete-btns')
+  let checkBtn = $(`<button>`).addClass('check-btn')
+  let span = $(`<span>`).text("Dumb Fuck")
+  let listItem = $(`<li>`).addClass('list-item')
           <button class="check-btns">
             <i class="fas fa-check"></i>
           </button>
@@ -191,7 +194,7 @@
           <button class="delete-btn">
             <i class="fas fa-eraser"></i>
           </button>
-        </li>
+        </li> -->
       </ul>
 
     </div>
