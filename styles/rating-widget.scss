@@ -1,0 +1,36 @@
+/* Rating Star Widgets Style */
+
+.rating-stars {
+height: fit-content;
+margin-top: auto;
+margin-bottom: auto;
+}
+
+#stars {
+  list-style-type:none;
+  padding:0;
+  margin: auto;
+
+  -moz-user-select:none;
+  -webkit-user-select:none;
+}
+.star {
+  display:inline-block;
+
+}
+
+/* Idle State of the stars */
+.rating-stars ul > li.star > i.fa {
+  font-size: 1.7em; /* Change the size of the stars */
+  color:#ccc; /* Color on idle state */
+}
+
+/* Hover state of the stars */
+.rating-stars ul > li.star.hover > i.fa {
+  color:#FFCC36;
+}
+
+/* Selected state of the stars */
+.rating-stars ul > li.star.selected > i.fa {
+  color:#FF912C;
+}
