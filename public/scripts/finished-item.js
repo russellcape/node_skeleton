@@ -21,7 +21,4 @@ $(document).ready(function(){
     $('.list-item').append('new-list-element')
   }
 
-  $.ratePicker("#priority");
-
-
 });
