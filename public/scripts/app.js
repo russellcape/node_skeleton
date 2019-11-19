@@ -1,10 +1,25 @@
 $(() => {
-  $.ajax({
-    method: "GET",
-    url: "/api/users"
-  }).done((users) => {
-    for(user of users) {
-      $("<div>").text(user.name).appendTo($("body"));
-    }
-  });;
+  $( ".submit-todo" ).submit(function( event ) {
+    event.preventDefault();
+
+    const starTotal = $(this).find('.selected').length;
+
+    const formData = {
+      description: this.todoTextbox.value,
+      date: this.todoDate.value,
+      priority: starTotal
+    };
+
+    console.log(formData);
+
+    $.ajax({
+      url: '/todos',
+      method: 'POST',
+      data: formData
+    })
+      .done(function (newTodo) {
+        console.log(newTodo)
+
+      })
+  });
 });
