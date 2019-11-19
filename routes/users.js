@@ -99,12 +99,21 @@ module.exports = (db) => {
   });
 
   router.post("/todos", (req, res) => {
-    if (!req.body.text) {
+    if (!req.body) {
       res.status(400).json({ error: 'invalid request: no data in POST body'});
       return;
-    } else {
-      const todo = req.body;
     }
+
+  //   SECOND PART (BACK END) :
+  // - extract content from the body of the request (req.body)
+  // - if having issues with req.body add configs for json
+  // - find out the category of the todo from extracted data
+  // - insert the todo in the database with the category
+  // - send back response to the client (response is the new todo, with category)
+
+    const { todo, data, priority } = req.body;
+
+    console.log(req.body);
 
   });
 
