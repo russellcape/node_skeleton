@@ -18,7 +18,7 @@ $(document).ready(function(){
     });
   });
 
-  $('#stars li').on('click', function(){
+  $('.star').on('click', function(){
     const onStar = parseInt($(this).data('value'), 10);
     const stars = $(this).parent().children('.star');
     for (i = 0; i < stars.length; i++) {
