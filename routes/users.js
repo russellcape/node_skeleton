@@ -108,9 +108,7 @@ module.exports = (db) => {
   //   SECOND PART (BACK END) :
   // - if having issues with req.body add configs for json
   // - extract content from the body of the request (req.body)
-  const { description, date_due, priority } = req.body;
-  let date_created = Date.now();
-  console.log(date_created);
+  const { description, date_created, date_due, priority } = req.body;
 
   getCategories()
   .then(categories => {
@@ -119,18 +117,28 @@ module.exports = (db) => {
     // - find out the category of the todo from extracted data
     const categoryResult = categoriesCheck(categories, descriptionArray);
 
-
-    // - insert the todo in the database with the category
+    // QUERY THAT CHECKS WHAT THE CATEGORY ID IS WHEN GIVEN THE CATEGORY NAME
     const text = `
-    INSERT INTO $1 (user_id, category_id, description, date_created, date_due, priority, completed)
-    VALUES (1, ?, $2, $3, $4, $5, FALSE);`;
-    const values = [categoryResult, description, date_created, date_due, priority];
-
+    SELECT categories.id
+    FROM categories
+    WHERE categories.name = $1
+    ;`;
+    const values = [categoryResult];
 
     db.query(text, values)
     .then(data => {
-      // - send back response to the client (response is the new todo, with category)
+      // - insert the todo in the database with the category
+      const text = `
+      INSERT INTO todos (user_id, category_id, description, date_created, date_due, priority, completed)
+      VALUES ($1, $2, $3, $4, $5, $6, $7);`;
+      const values = [1, data.rows[0].id, description, date_created, date_due, priority, false];
 
+      db.query(text, values)
+      .then(data => {
+        // - send back response to the client (response is the new todo, with category)
+        console.log("IT WORKED I THINK!");
+        res.send(data.rows[0]);
+      })
     })
     .catch(error => {
       console.log(`${error}`)
