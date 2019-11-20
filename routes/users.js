@@ -132,6 +132,9 @@ module.exports = (db) => {
       INSERT INTO todos (user_id, category_id, description, date_created, date_due, priority, completed)
       VALUES ($1, $2, $3, $4, $5, $6, $7);`;
       const values = [1, data.rows[0].id, description, date_created, date_due, priority, false];
+      const todos = data.rows;
+      console.log(todos);
+      // - send back response to the client (response is the new todo, with category)
 
       db.query(text, values)
       .then(data => {

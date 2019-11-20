@@ -4,4 +4,11 @@ $(document).ready(function(){
     $(".cats").slideToggle("slow");
   });
 
+
+
+  $( ".new-item-button" ).click(function() {
+    $(".todos").focus()
+  });
+
+
 });

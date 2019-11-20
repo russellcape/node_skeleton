@@ -29,6 +29,8 @@
   cursor: pointer;
   background: #4698ED;
   border: none;
+  border-radius: 15%;
+  box-shadow: 2px 2px 10px rgba(0,0,0,0.4);
 }
 
 .todo-btn:active {
