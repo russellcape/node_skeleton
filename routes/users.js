@@ -117,17 +117,20 @@ module.exports = (db) => {
     // - find out the category of the todo from extracted data
     const categoryResult = categoriesCheck(categories, descriptionArray);
 
+    console.log("THE CATEGORY ID SHOULD BE: ", categoryResult);
+
     // QUERY THAT CHECKS WHAT THE CATEGORY ID IS WHEN GIVEN THE CATEGORY NAME
     const text = `
     SELECT categories.id
     FROM categories
-    WHERE categories.name = $1
+    WHERE categories.name LIKE $1
     ;`;
     const values = [categoryResult];
 
     db.query(text, values)
     .then(data => {
       // - insert the todo in the database with the category
+      console.log(data.rows);
       const text = `
       INSERT INTO todos (user_id, category_id, description, date_created, date_due, priority, completed)
       VALUES ($1, $2, $3, $4, $5, $6, $7);`;
