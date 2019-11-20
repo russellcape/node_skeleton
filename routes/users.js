@@ -108,8 +108,9 @@ module.exports = (db) => {
   //   SECOND PART (BACK END) :
   // - if having issues with req.body add configs for json
   // - extract content from the body of the request (req.body)
-  const { description, date, priority } = req.body;
-
+  const { description, date_due, priority } = req.body;
+  let date_created = Date.now();
+  console.log(date_created);
 
   getCategories()
   .then(categories => {
@@ -122,8 +123,8 @@ module.exports = (db) => {
     // - insert the todo in the database with the category
     const text = `
     INSERT INTO $1 (user_id, category_id, description, date_created, date_due, priority, completed)
-    VALUES (1, ?, $2, ??, $3, $4, FALSE);`;
-    const values = [categoryResult, description, date, priority];
+    VALUES (1, ?, $2, $3, $4, $5, FALSE);`;
+    const values = [categoryResult, description, date_created, date_due, priority];
 
 
     db.query(text, values)
