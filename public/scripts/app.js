@@ -6,11 +6,10 @@ $(() => {
 
     const formData = {
       description: this.todoTextbox.value,
-      date: this.todoDate.value,
+      date_created: moment().format().substr(0, 10),
+      date_due: this.todoDate.value,
       priority: starTotal
     };
-
-    console.log(formData);
 
     $.ajax({
       url: '/todos',
