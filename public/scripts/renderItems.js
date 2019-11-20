@@ -2,45 +2,46 @@ $(document).ready(function() {
 
 
 const renderTodos = function(todos) {
-  for (let todo of todos) {
-    $('.list-box').prepend(createTodoItem(todos))
+  for (let todo in todos) {
+    $('.list-box').append(createTodoItem(todo))
   }
 };
 
 
-
-const createTodoItem = function() {
+const createTodoItem = function(todo) {
   let checkIcon = $(`<i>`).addClass('fas fa-check')
   let eraserIcon = $(`<i>`).addClass('fas fa-eraser')
   let deleteBtn = $(`<button>`).addClass('delete-btns')
   let checkBtn = $(`<button>`).addClass('check-btn')
-  let span = $(`<span>`).text("Dumb Fuck")
+  let span = $(`<span>`).text(todo)
   let listItem = $(`<li>`).addClass('list-item')
-  .append()
-
-  // let span = $("<span>")
-  // let p = $("<p>")
-  // li.append(p)
-  // p.append(span)
-
+  checkIcon.appendTo(checkBtn)
+  checkBtn.appendTo(listItem)
+  span.appendTo(listItem)
+  eraserIcon.appendTo(deleteBtn)
+  deleteBtn.appendTo(listItem)
+  return listItem
 };
 
 
 const handleNewItem = (function() {
-  const todoItem = $('.list-item')
-  todoItem.on('button', function(event) {
+  const todoItemForm = $('.submit-todo')
+  todoItemForm.on('submit', function(event) {
     event.preventDefault();
     const inputDataStr = $(this).serialize()
-    const textContent = $('.todos').val();
+    console.log(inputDataStr)
+    console.log('Button clicked, performing ajax call...');
     $.ajax({
       url: `/todos`,
-      method: `GET`,
+      method: `POST`,
       dataType: inputDataStr
     }).then(function(postedTodos) {
       $('.todos').text();
       loadNewTodos(postedTodos)
     })
+
   })
+
 });
 handleNewItem()
 
@@ -56,6 +57,6 @@ const loadNewTodos = function() {
   })
 };
 
-
+loadNewTodos()
 
 });
