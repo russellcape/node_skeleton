@@ -128,6 +128,8 @@ module.exports = (db) => {
 
     db.query(text, values)
     .then(data => {
+      const todos = data.rows;
+      console.log(todos);
       // - send back response to the client (response is the new todo, with category)
 
     })
