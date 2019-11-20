@@ -3,7 +3,7 @@ $(document).ready(function() {
 
 const renderTodos = function(todos) {
   for (let todo in todos) {
-    $('.list-box').append(createTodoItem(todo))
+    $('.list-box').prepend(createTodoItem(todo))
   }
 };
 
@@ -24,11 +24,11 @@ const createTodoItem = function(todo) {
 };
 
 
-const handleNewItem = (function() {
+const handleNewItem = function() {
   const todoItemForm = $('.submit-todo')
   todoItemForm.on('submit', function(event) {
     event.preventDefault();
-    const inputDataStr = $(this).serialize()
+    const inputDataStr = $(this)
     console.log(inputDataStr)
     console.log('Button clicked, performing ajax call...');
     $.ajax({
@@ -39,10 +39,8 @@ const handleNewItem = (function() {
       $('.todos').text();
       loadNewTodos(postedTodos)
     })
-
   })
-
-});
+};
 handleNewItem()
 
 const loadNewTodos = function() {
