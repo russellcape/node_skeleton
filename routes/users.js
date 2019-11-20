@@ -8,6 +8,7 @@
 const express = require('express');
 const router  = express.Router();
 const { getCategories } = require('../helpers/get_categories');
+const { splitString, categoriesCheck } = require('../helpers/check_categories');
 
 
 module.exports = (db) => {
@@ -105,15 +106,35 @@ module.exports = (db) => {
     }
 
   //   SECOND PART (BACK END) :
-  // - extract content from the body of the request (req.body)
   // - if having issues with req.body add configs for json
-  // - find out the category of the todo from extracted data
-  // - insert the todo in the database with the category
-  // - send back response to the client (response is the new todo, with category)
+  // - extract content from the body of the request (req.body)
+  const { description, date, priority } = req.body;
 
-    const { todo, data, priority } = req.body;
 
-    console.log(req.body);
+  getCategories()
+  .then(categories => {
+    // Split String takes an array and separator (in this case it's space)
+    const descriptionArray = splitString(description, ' ');
+    // - find out the category of the todo from extracted data
+    const categoryResult = categoriesCheck(categories, descriptionArray);
+
+
+    // - insert the todo in the database with the category
+    const text = `
+    INSERT INTO $1 (user_id, category_id, description, date_created, date_due, priority, completed)
+    VALUES (1, ?, $2, ??, $3, $4, FALSE);`;
+    const values = [categoryResult, description, date, priority];
+
+
+    db.query(text, values)
+    .then(data => {
+      // - send back response to the client (response is the new todo, with category)
+
+    })
+    .catch(error => {
+      console.log(`${error}`)
+      });
+    });
 
   });
 
