@@ -27,7 +27,7 @@ const createTodoItem = function(todo) {
   let modalHeader = $(`<div>`).addClass('modal-header')
   let modalContentDiv = $(`<div>`).addClass('modal-content')
   let modalDialog = $(`<div>`).addClass("modal-dialog")
-  let modalOutterDiv = $(`div`).addClass('modal fade')
+  let modalOutterDiv = $(`<div>`).addClass('modal fade1')
   let checkIcon = $(`<i>`).addClass('fas fa-check')
   let editIcon = $(`<i>`).addClass('fas fa-edit')
   let eraserIcon = $(`<i>`).addClass('fas fa-eraser')
@@ -36,6 +36,8 @@ const createTodoItem = function(todo) {
   let editBtn = $(`<button>`).addClass('edit-btn')
   let deleteBtn = $(`<button>`).addClass('delete-btn')
   let listItem = $(`<li>`).addClass('list-item')
+
+  // // Split 1
   modalTodoLabel.appendTo(editTodoDiv)
   editTodoInput.appendTo(editTodoDiv)
   modalCategoryLabel.appendTo(editCategoryDiv)
