@@ -31,7 +31,7 @@ module.exports = (db) => {
 
     db.query(text)
       .then(data => {
-        const todos = data.rows;
+        const todos = data.rows[0];
         console.log(todos);
         res.json(todos);
       })
