@@ -17,8 +17,8 @@ const createTodoItem = function(todo) {
   let editTodoDiv = $(`<div>`).addClass('form-group')
   let editCategoryDiv = $(`<div>`).addClass('form-group')
   let form = $(`<form>`)
-  let modalBothDiv = $(`<div>`).addClass('modal-body')
-  let spanCloseModal = $(`<span>`)
+  let modalFormBothDiv = $(`<div>`).addClass('modal-body')
+  let spanExitModal = $(`<span>`)
   let exitModalBtn = $(`<button>`).addClass('close')
   let closeBtn = $(`<button>`).addClass('btn btn-secondary')
   let saveBtn = $(`<button>`).addClass('btn btn-primary')
@@ -26,29 +26,41 @@ const createTodoItem = function(todo) {
   let modalTitle = $(`<h5>`).addClass('modal-title')
   let modalHeader = $(`<div>`).addClass('modal-header')
   let modalContentDiv = $(`<div>`).addClass('modal-content')
-  let modelDialog = $(`<div>`).addClass("modal-dialog")
+  let modalDialog = $(`<div>`).addClass("modal-dialog")
+  let modalOutterDiv = $(`div`).addClass('modal fade')
   let checkIcon = $(`<i>`).addClass('fas fa-check')
   let editIcon = $(`<i>`).addClass('fas fa-edit')
   let eraserIcon = $(`<i>`).addClass('fas fa-eraser')
-  let modalOutterDiv = $(`div`).addClass('modal fade')
   let checkBtn = $(`<button>`).addClass('check-btn')
   let span = $(`<span>`).text()
   let editBtn = $(`<button>`).addClass('edit-btn')
   let deleteBtn = $(`<button>`).addClass('delete-btn')
-  let list = $(`<li>`).addClass('list-item')
-
-
-
-
-
-
-  // let listItem = $(`<li>`).addClass('list-item')
-  // checkIcon.appendTo(checkBtn)
-  // checkBtn.appendTo(listItem)
-  // span.appendTo(listItem)
-  // eraserIcon.appendTo(deleteBtn)
-  // deleteBtn.appendTo(listItem)
-  // return listItem
+  let listItem = $(`<li>`).addClass('list-item')
+  modalTodoLabel.appendTo(editTodoDiv)
+  editTodoInput.appendTo(editTodoDiv)
+  modalCategoryLabel.appendTo(editCategoryDiv)
+  editCategoryInput.appendTo(editTodoDiv)
+  editCategoryDiv.appendTo(form)
+  editTodoDiv.appendTo(form)
+  form.appendTo(modalFormBothDiv)
+  spanExitModal.appendTo(exitModalBtn)
+  exitModalBtn.appendTo(modalHeader)
+  modalTitle.appendTo(modalHeader)
+  closeBtn.appendTo(modalFooter)
+  saveBtn.appendTo(modalFooter)
+  modalFooter.appendTo(modalContentDiv)
+  modalHeader.appendTo(modalContentDiv)
+  modalContentDiv.appendTo(modalDialog)
+  modalDialog.appendTo(modalOutterDiv)
+  modalOutterDiv.appendTo(listItem)
+  checkIcon.appendTo(checkBtn)
+  checkBtn.appendTo(listItem)
+  span.appendTo(listItem)
+  editIcon.appendTo(editBtn)
+  editBtn.appendTo(listItem)
+  eraserIcon.appendTo(deleteBtn)
+  deleteBtn.appendTo(listItem)
+  return listItem
 };
 
 
