@@ -2,18 +2,19 @@ $(document).ready(function() {
 
 
 const renderTodos = function(todos) {
-  for (let todo in todos) {
+  for (let todo of todos) {
     $('.list-box').prepend(createTodoItem(todo))
   }
 };
 
 
 const createTodoItem = function(todo) {
+  console.log("CHECKING TODO: ", todo);
   let checkIcon = $(`<i>`).addClass('fas fa-check')
   let eraserIcon = $(`<i>`).addClass('fas fa-eraser')
   let deleteBtn = $(`<button>`).addClass('delete-btns')
   let checkBtn = $(`<button>`).addClass('check-btn')
-  let span = $(`<span>`).text(todo)
+  let span = $(`<span>`).text(todo.description)
   let listItem = $(`<li>`).addClass('list-item')
   checkIcon.appendTo(checkBtn)
   checkBtn.appendTo(listItem)
