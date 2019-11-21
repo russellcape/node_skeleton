@@ -14,18 +14,6 @@ $(document).ready(function(){
     $(this).parent().remove()
   });
 
-  $(".edit-btn").click(function(){
-    $(".col").slideDown();
-  });
-
-  const add = document.getElementsByClassName('.list-item');
-  add.onclick = addItem;
-
-  function addItem(event) {
-    $('.list-item').append('new-list-element')
-  }
-
-
 
   $('#exampleModal').on('show.bs.modal', function (event) {
     const button = $(event.relatedTarget) // Button that triggered the modal
