@@ -23,15 +23,15 @@ module.exports = (db) => {
 
     // CHANGE QUERY TO GET CATEGORY NAME
     const text = `
-    SELECT description, date_due, priority, category_id
+    SELECT id, description, date_due, priority, category_id
     FROM todos
     ORDER BY date_created;
     `;
 
     db.query(text)
       .then(data => {
-        const todos = data.rows[0];
-        // console.log(todos);
+        const todos = data.rows;
+        console.log(todos);
         res.json(todos);
 
       })
@@ -51,7 +51,7 @@ module.exports = (db) => {
 
     db.query(text)
     .then(data => {
-      const todos = data.rows[0];
+      const todos = data.rows;
       // console.log(todos);
       res.json(todos);
     });

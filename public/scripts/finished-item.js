@@ -22,28 +22,17 @@ $(document).ready(function(){
   });
 
   $('.delete-btn').click(function() {
-    $(this).parent().remove()
+    let li_id = $(this).find("li").attr("id")
     $.ajax({
-      url: '/todos/:id',
-      method: 'POST',
+      url: `/todos/${li_id}`,
+      method: 'DELETE',
 
     })
     .done(function () {
 
     })
+    $(this).parent().remove()
   });
-
-  $(".edit-btn").click(function(){
-    $(".col").slideDown();
-  });
-
-  const add = document.getElementsByClassName('.list-item');
-  add.onclick = addItem;
-
-  function addItem(event) {
-    $('.list-item').append('new-list-element')
-  }
-
 
 
   $('#exampleModal').on('show.bs.modal', function (event) {
