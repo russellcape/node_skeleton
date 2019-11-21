@@ -23,8 +23,9 @@ module.exports = (db) => {
 
     // CHANGE QUERY TO GET CATEGORY NAME
     const text = `
-    SELECT id, description, date_due, priority, category_id
+    SELECT todos.id, description, date_due, priority, category_id, categories.name as category
     FROM todos
+    JOIN categories ON category_id = categories.id
     ORDER BY date_created;
     `;
 

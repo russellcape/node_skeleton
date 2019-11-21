@@ -87,12 +87,12 @@ const createTodoItem = function(todo) {
   exitModalBtn.appendTo(modalHeader)
   spanExitModal.appendTo(exitModalBtn)
   modalHeader.appendTo(modalContentDiv)
+  modalFormBothDiv.appendTo(modalContentDiv)
+  modalFooter.appendTo(modalContentDiv)
 
   closeBtn.appendTo(modalFooter)
   saveBtn.appendTo(modalFooter)
 
-  modalFormBothDiv.appendTo(modalContentDiv)
-  modalFooter.appendTo(modalContentDiv)
   modalContentDiv.appendTo(modalDialog)
   modalDialog.appendTo(modalOutterDiv)
   modalOutterDiv.appendTo(listItem)
