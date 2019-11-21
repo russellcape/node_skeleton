@@ -11,18 +11,18 @@ const renderTodos = function(todos) {
 const createTodoItem = function(todo) {
   console.log("CHECKING TODO: ", todo);
   let modalTodoLabel = $(`<label>`).addClass('col-form-label').attr({
-    for: "recipient-name"
+    for: "todoInput"
   }).text("Todo:")
   let editTodoInput = $(`<input>`).addClass('form-control').attr({
     type: "text",
-    id: "recipient-name"
+    id: "todoInput"
   })
   let modalCategoryLabel = $(`<label>`).addClass('col-form-label').attr({
-    for: "message-text"
+    for: "categoryInput"
   }).text("Category:")
   let editCategoryInput = $(`<input>`).addClass('form-control').attr({
     type: "text",
-    id: "message-text"
+    id: "categoryInput"
   })
   let editTodoDiv = $(`<div>`).addClass('form-group')
   let editCategoryDiv = $(`<div>`).addClass('form-group')
@@ -40,7 +40,7 @@ const createTodoItem = function(todo) {
     type: "button",
     "data-dismiss": "modal"
   }).text("Close")
-  let saveBtn = $(`<button>`).addClass('btn btn-primary').attr({
+  let saveBtn = $(`<button>`).addClass('btn btn-primary save-btn').attr({
     type: "button"
   }).text("Save Changes")
   let modalFooter = $(`<div>`).addClass('modal-footer')
@@ -79,7 +79,7 @@ const createTodoItem = function(todo) {
   editTodoInput.appendTo(editTodoDiv)
   editTodoDiv.appendTo(form)
   modalCategoryLabel.appendTo(editCategoryDiv)
-  editCategoryInput.appendTo(editTodoDiv)
+  editCategoryInput.appendTo(editCategoryDiv)
   editCategoryDiv.appendTo(form)
   form.appendTo(modalFormBothDiv)
 
