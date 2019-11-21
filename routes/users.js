@@ -31,7 +31,7 @@ module.exports = (db) => {
     db.query(text)
       .then(data => {
         const todos = data.rows;
-        console.log(todos);
+        // console.log(todos);
         res.json(todos);
 
       })
@@ -125,7 +125,22 @@ module.exports = (db) => {
       .then(data => {
         // send back response to the client (response is the new todo, with category)
         console.log("THE NEXT STEP IS TO CHECK WHAT COMES BACK: ", data.rows[0]);
-        res.json(data.rows[0]);
+        return (data.rows[0]);
+      })
+      .then(newTodo => {
+
+        const query = {
+          text: 'SELECT name FROM categories WHERE id = $1',
+          values: [newTodo.category_id]
+        }
+
+        db.query(query)
+        .then(result=>{
+          newTodo.category = result.rows[0].name;
+          res.json(newTodo);
+        })
+
+
       })
     })
     .catch(error => {
