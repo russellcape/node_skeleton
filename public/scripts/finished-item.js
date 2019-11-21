@@ -1,5 +1,16 @@
 $(document).ready(function(){
 
+  $('.side').click(function(event){
+    if ($(event.target).text() === 'Priorities');
+    $.ajax({
+      url: '/todos/priority',
+      method: 'GET'
+    })
+    .done(function(database) {
+      console.log(database);
+    })
+  });
+
   $('.list-item').click(function() {
     if ($(this).hasClass('checked')) {
       $(this).removeClass("checked");

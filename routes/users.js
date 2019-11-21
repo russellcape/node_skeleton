@@ -31,7 +31,7 @@ module.exports = (db) => {
     db.query(text)
       .then(data => {
         const todos = data.rows[0];
-        console.log(todos);
+        // console.log(todos);
         res.json(todos);
 
       })
@@ -40,21 +40,22 @@ module.exports = (db) => {
       });
   });
 
-  // // ROUTER GET TODOS ARRANGED BY PRIORITY
-  // router.get("/todos/priority", (req, res) => {
+  // ROUTER GET TODOS ARRANGED BY PRIORITY
+  router.get("/todos/priority", (req, res) => {
 
-  //   const text = `
-  //   SELECT description, date_due, priority
-  //   FROM todos
-  //   ORDER BY priority DESC
-  //   ;`;
+    const text = `
+    SELECT description, date_due, priority, category_id
+    FROM todos
+    ORDER BY priority DESC
+    ;`;
 
-  //   db.query(text)
-  //   .then(data => {
-  //     const todos = data.rows[0];
-  //     res.json(todos);
-  //   });
-  // });
+    db.query(text)
+    .then(data => {
+      const todos = data.rows[0];
+      // console.log(todos);
+      res.json(todos);
+    });
+  });
 
   // ROUTER GET TODOS ARRANGED BY DUE DATE
   router.get("/categories/:id/todos", (req, res) => {
