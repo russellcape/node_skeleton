@@ -16,7 +16,6 @@ module.exports = (db) => {
   router.get("/", (req, res) => {
     res.render("index");
 
-
   });
 
   // ROUTER GET TODOS ARRANGED BY DATE CREATED ( DEFAULT )
@@ -30,10 +29,13 @@ module.exports = (db) => {
 
     db.query(text)
       .then(data => {
-        const todos = data.rows;
+        const todos = data.rows[0];
         console.log(todos);
         res.json(todos);
 
+      })
+      .catch(error => {
+        console.log(`${error}`);
       });
   });
 
@@ -48,7 +50,7 @@ module.exports = (db) => {
 
   //   db.query(text)
   //   .then(data => {
-  //     const todos = data.rows;
+  //     const todos = data.rows[0];
   //     res.json(todos);
   //   });
   // });
@@ -70,7 +72,7 @@ module.exports = (db) => {
 
     db.query(text, values)
     .then(data => {
-      const todos = data.rows;
+      const todos = data.rows[0];
       console.log("the category is currently: ", todos);
 
       res.json(todos);
@@ -125,7 +127,7 @@ module.exports = (db) => {
       RETURNING *
       `;
       const values = [1, data.rows[0].id, description, date_created, date_due, priority, false];
-      // const todos = data.rows;
+      // const todos = data.rows[0];
 
       db.query(text, values)
       .then(data => {
@@ -149,6 +151,11 @@ module.exports = (db) => {
   //This route posts to the db and checks if the user info exists
   router.post("/login", (req, res) => {
 
+  });
+
+  router.post("/logout", (req, res) => {
+
+    // res.redirect("/login");
   });
 
   // Route to update a todo
@@ -175,7 +182,6 @@ module.exports = (db) => {
 
   // Route to delete a todo
   router.delete("/todos/:id", (req, res) => {
-    // When we click the delete
 
     const text = `
     DELETE FROM todos
