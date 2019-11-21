@@ -12,6 +12,14 @@ $(document).ready(function(){
 
   $('.delete-btn').click(function() {
     $(this).parent().remove()
+    $.ajax({
+      url: '/todos/:id',
+      method: 'POST',
+
+    })
+    .done(function () {
+
+    })
   });
 
   $(".edit-btn").click(function(){
