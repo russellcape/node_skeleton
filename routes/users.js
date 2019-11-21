@@ -84,16 +84,6 @@ module.exports = (db) => {
 
   });
 
-  // This route allows users to register
-  router.get('/register', (req, res) => {
-
-  });
-
-  // This route allows users to login
-  router.get('/login', (req, res) => {
-
-  });
-
   // Route to add new todo
   router.post("/todos", (req, res) => {
     if (!req.body) {
@@ -133,7 +123,7 @@ module.exports = (db) => {
       db.query(text, values)
       .then(data => {
         // send back response to the client (response is the new todo, with category)
-        // console.log("THE NEXT STEP IS TO CHECK WHAT COMES BACK: ", data);
+        console.log("THE NEXT STEP IS TO CHECK WHAT COMES BACK: ", data.rows[0]);
         res.json(data.rows[0]);
       })
     })
@@ -145,18 +135,53 @@ module.exports = (db) => {
   });
 
   // This route posts the db and creates the user info
-  router.post("/register", (req, res) => {
+  router.post('/register', (req, res) => {
+    // deconstructure email and password from the form submitted by login
+    const { name, email, password } = req.body;
+    const text = `
+    INSERT INTO users (name, email, password)
+    VALUES ($1, $2, $3)
+    RETURNING id
+    ;`;
+    const values = [ name, email, password ];
 
+    db.query(text, values)
+      .then(data => {
+        const userId = data.rows[0].id;
+        req.session.user_id = userId;
+        res.send( {email} );
+      })
+      .catch(error => {
+        console.log(`${error}`);
+    });
   });
 
   //This route posts to the db and checks if the user info exists
   router.post("/login", (req, res) => {
+    const { email, password } = req.body;
+    const text = `
+    SELECT * FROM users
+    WHERE email = $1 AND password = $2
+    ;`;
+    const values = [ email, password ];
 
+    db.query(text, values)
+      .then(data => {
+        if (data.rows[0].length === 0) {
+          res.send( { message: "You're not logged in!" });
+        } else {
+          req.session.user_id = data.rows[0].id;
+          res.send( { message: "Succesfully set session" } )
+        }
+      })
+      .catch(error => {
+        console.log(`${error}`);
+      });
   });
 
   router.post("/logout", (req, res) => {
-
-    // res.redirect("/login");
+    req.session = null;
+    res.send( { message: "Cleared session because user logged out" } );
   });
 
   // Route to update a todo
