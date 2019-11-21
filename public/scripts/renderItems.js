@@ -26,7 +26,7 @@ const createTodoItem = function(todo) {
   })
   let editTodoDiv = $(`<div>`).addClass('form-group')
   let editCategoryDiv = $(`<div>`).addClass('form-group')
-  let form = $(`<form>`)
+  let form = $(`<form>`).attr("data-id", `${todo.id}`)
   let modalFormBothDiv = $(`<div>`).addClass('modal-body')
   let spanExitModal = $(`<span>`).attr({
     "aria-hidden": "true"
@@ -133,26 +133,48 @@ const loadNewTodos = function() {
     method: `GET`,
     dataType: `json`,
     success: function(data) {
-       console.log('Success: ', data);
-       renderTodos(data);
+      console.log('Success: ', data);
+      renderTodos(data);
+
+      $('.list-item').click(function() {
+        if ($(this).hasClass('checked')) {
+          $(this).removeClass("checked");
+          $(this).find('.fas.fa-check').toggle('slide');
+        } else {
+          $(this).addClass("checked")
+          $(this).find('.fas.fa-check').toggle('slide');
+        }
+      });
+
+      $('.delete-btn').click(function() {
+        let li_id = $(this).parent().attr("id")
+        console.log(li_id)
+        $.ajax({
+          url: `/todos/${li_id}`,
+          method: 'DELETE',
+        })
+        .done(function () {
+
+        })
+        $(this).parent().remove()
+      });
 
 
+      // THIS IS SUPPOSED TO BE THE AJAX CLICK THAT WILL EDIT
 
+      // $('.delete-btn').click(function() {
+      //   let li_id = $(this).parent().attr("id")
+      //   console.log(li_id)
+      //   $.ajax({
+      //     url: `/todos/${li_id}`,
+      //     method: 'PUT',
+      //   })
+      //   .done(function () {
 
-  $('.delete-btn').click(function() {
-    let li_id = $(this).parent().attr("id")
-    console.log(li_id)
-    $.ajax({
-      url: `/todos/${li_id}`,
-      method: 'DELETE',
+      //   })
+      // });
 
-    })
-    .done(function () {
-
-    })
-    $(this).parent().remove()
-  });
-
+      //end of success
     }
   })
 };
