@@ -9,7 +9,7 @@ const renderTodos = function(todos) {
 
 // ul = list-box class
 const createTodoItem = function(todo) {
-  console.log("CHECKING TODO: ", todo);
+  // console.log("CHECKING TODO: ", todo);
   let modalTodoLabel = $(`<label>`).addClass('col-form-label').attr({
     for: "todoInput"
   }).text("Todo:")
@@ -63,8 +63,8 @@ const createTodoItem = function(todo) {
   let checkIcon = $(`<i>`).addClass('fas fa-check')
   let editIcon = $(`<i>`).addClass('fas fa-edit')
   let eraserIcon = $(`<i>`).addClass('fas fa-eraser')
-  let checkBtn = $(`<button>`).addClass('check-btn')
-  let span = $(`<span>`).text(todo.description)
+  let checkBtn = $(`<button>`).addClass('check-btns')
+  let span = $(`<span>`).text([`${todo.description}, -----Priority-----> ${todo.priority}, -----Category-----> ${todo.category}`])
   let editBtn = $(`<button>`).addClass('edit-btn').attr({
     "data-toggle": "modal",
     type: "button",
@@ -107,25 +107,55 @@ const createTodoItem = function(todo) {
   return listItem
 };
 
+$( ".submit-todo" ).submit(function( event ) {
+  event.preventDefault();
+  console.log("submit-todo")
+  const starTotal = $(this).find('.selected').length;
 
-const handleNewItem = function() {
-  const todoItemForm = $('.submit-todo')
-  todoItemForm.on('submit', function(event) {
-    event.preventDefault();
-    const inputDataStr = $(this)
-    console.log(inputDataStr)
-    console.log('Button clicked, performing ajax call...');
-    $.ajax({
-      url: `/todos`,
-      method: `POST`,
-      dataType: inputDataStr
-    }).then(function(postedTodos) {
-      $('.todos').text();
-      loadNewTodos(postedTodos)
-    })
+  const formData = {
+    description: this.todoTextbox.value,
+    date_created: moment().format().substr(0, 10),
+    date_due: this.todoDate.value,
+    priority: starTotal
+  };
+
+  $.ajax({
+    url: '/todos',
+    method: 'POST',
+    data: formData
   })
-};
-handleNewItem()
+    .done(function (newTodo) {
+      console.log(newTodo , "add todo")
+      const todoItem = createTodoItem(newTodo)
+      console.log(todoItem);
+      $('.list-box').prepend(createTodoItem(newTodo))
+
+    })
+});
+
+
+// const handleNewItem = function() {
+//   const todoItemForm = $('.submit-todo')
+//   todoItemForm.on('submit', function(event) {
+//     event.preventDefault();
+//     const inputDataStr = $(this)
+//     // console.log(inputDataStr)
+//     console.log('Button clicked, performing ajax call...');
+// //     $.ajax({
+// //       url: `/todos`,
+// //       method: `POST`,
+// //       dataType: inputDataStr
+// //     }).then(function(postedTodos) {
+// //       $('.todos').text();
+// //       loadNewTodos(postedTodos)
+// //     })
+// //   })
+// // };
+// handleNewItem()
+
+
+
+
 
 const loadNewTodos = function() {
   $.ajax({
