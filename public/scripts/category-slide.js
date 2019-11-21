@@ -8,8 +8,6 @@ $(document).ready(function(){
     $(".rotate").toggleClass("down");
    });
 
-
-
   $( ".new-item-button" ).click(function() {
     $(".todos").focus()
   });
