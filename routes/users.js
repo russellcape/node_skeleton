@@ -30,7 +30,7 @@ module.exports = (db) => {
 
     db.query(text)
       .then(data => {
-        const todos = data.rows[0];
+        const todos = data.rows;
         console.log(todos);
         res.json(todos);
 
