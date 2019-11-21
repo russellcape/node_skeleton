@@ -25,17 +25,24 @@ module.exports = (db) => {
     const text = `
     SELECT description, date_due, priority, category_id
     FROM todos
-    ORDER BY date_created;`;
+    ORDER BY date_created;
+    `;
 
     db.query(text)
       .then(data => {
         const todos = data.rows[0];
         console.log(todos);
         res.json(todos);
+<<<<<<< HEAD
 
       })
       .catch(error => {
         console.log(`${error}`);
+=======
+      })
+      .catch(error => {
+        console.log(`${error}`)
+>>>>>>> 9579afcd54f9604ddcf78dc6a2a1c097c1ea5693
       });
   });
 
