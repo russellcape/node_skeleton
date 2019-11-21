@@ -80,29 +80,29 @@
       <div class="sticky-note">sticky</div>
         <h5 class="index-title">Things ToDo</h5>
       <button class="cat-slide">
-        Categories
+        <span><a href="#"><div class="fas fa-angle-right rotate"></div></a>Categories</span>
       </button>
       <button class="cats">
         <i class="fas fa-film"></i>
-        Film / Series
+        <span>Film / Series</span>
       </button>
       <button class="cats">
         <i class="fas fa-utensils"></i>
-        Restaurants
+        <span>Restaurants</span>
       </button>
       <button class="cats">
         <i class="fas fa-book"></i>
-        Books
+        <span>Books</span>
       </button>
       <button class="cats">
         <i class="fas fa-shopping-bag"></i>
-        Products
+        <span>Products</span>
       </button>
       <button class="side">
-        Due Date
+        <span>Due Date</span>
       </button>
       <button class="side">
-        Priorities
+          <span>Priorities</span>
       </button >
     </div>
 
@@ -112,7 +112,7 @@
         <h2 class="todo-title">My Too Doo List</h2>
         <form class="submit-todo">
           <input class="todos" type="text" placeholder="What are you planning?" name="todoTextbox">
-          <button class="todo-btn">Add</button>
+          <button class="todo-btn">Add Tuwdoo</button>
           <div class="due-priority-box">
             <div class="title-due">
               <label class="due-title">When is this due/happening?</label>
@@ -143,14 +143,48 @@
         </form>
       </div>
         <ul class="list-box">
-          <!-- <li class="list-item">
+          <li class="list-item">
             <button class="check-btns">
               <i class="fas fa-check"></i>
             </button>
-            Hit the gym
-            <button class="delete-btn">
-              <i class="fas fa-eraser"></i>
-            </button>
+            <span>Hit the gym</span>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Edit Todo Item Category</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="form-group">
+            <label for="todos" class="col-form-label">Todo:</label>
+            <input type="text" class="form-control" id="todoInModal">
+          </div>
+          <div class="form-group">
+            <label for="categories" class="col-form-label">Category:</label>
+            <input class="form-control" id="categoryInModal">
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save Changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<button class="delete-btn">
+    <i class="fas fa-eraser"></i>
+  </button>
+  <button class="edit-btn" data-toggle="modal" type="button" data-target="#exampleModal">
+    <i class="fas fa-edit"></i>
+  </button>
+
           </li>
           <li class="list-item">
             <button class="check-btns">
@@ -159,6 +193,9 @@
             Pay bills
             <button class="delete-btn">
               <i class="fas fa-eraser"></i>
+            </button>
+            <button class="edit-btn">
+              <i class="fas fa-edit"></i>
             </button>
           </li>
           <li class="list-item">
@@ -169,6 +206,9 @@
             <button class="delete-btn">
               <i class="fas fa-eraser"></i>
             </button>
+            <button class="edit-btn">
+              <i class="fas fa-edit"></i>
+            </button>
           </li>
           <li class="list-item">
             <button class="check-btns">
@@ -177,6 +217,9 @@
             Buy eggs
             <button class="delete-btn">
               <i class="fas fa-eraser"></i>
+            </button>
+            <button class="edit-btn">
+              <i class="fas fa-edit"></i>
             </button>
           </li>
           <li class="list-item">
@@ -187,6 +230,9 @@
             <button class="delete-btn">
               <i class="fas fa-eraser"></i>
             </button>
+            <button class="edit-btn">
+              <i class="fas fa-edit"></i>
+            </button>
           </li>
           <li class="list-item">
             <button class="check-btns">
@@ -196,7 +242,10 @@
             <button class="delete-btn">
               <i class="fas fa-eraser"></i>
             </button>
-          </li> -->
+            <button class="edit-btn">
+              <i class="fas fa-edit"></i>
+            </button>
+          </li>
         </ul>
 
 
@@ -207,7 +256,8 @@
     </div>
 
     <div class="blank-div">
-      SERGES DEW
+      <div class="notes">here</div>
+      <span>SERGES DEW</span>
     </div>
 
 

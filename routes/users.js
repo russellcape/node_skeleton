@@ -29,13 +29,6 @@ module.exports = (db) => {
   // ROUTER GET TODOS ARRANGED BY DATE CREATED ( DEFAULT )
   router.get("/todos", (req, res) => {
 
-    // FOR TESTING API QUERY ONLY
-    getCategories()
-    .then(categories => {
-
-      res.send(categories);
-    });
-
     const text = `
     SELECT description, date_due, priority
     FROM todos

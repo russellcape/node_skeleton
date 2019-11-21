@@ -4,6 +4,10 @@ $(document).ready(function(){
     $(".cats").slideToggle("slow");
   });
 
+  $(".cat-slide").click(function(){
+    $(".rotate").toggleClass("down");
+   });
+
 
 
   $( ".new-item-button" ).click(function() {
