@@ -211,4 +211,28 @@ const loadNewTodos = function() {
 
 loadNewTodos()
 
+$('.side').click(function(event){
+  if ($(event.target).text() === 'Priorities');
+  $.ajax({
+    url: '/todos/priority',
+    method: 'GET'
+  })
+  .done(function(database) {
+    console.log(database);
+  })
+});
+
+$('.cats').click(function(event) {
+  const categoryId =  this.getAttribute("data-categoryId");
+  $.ajax({
+    url: `categories/${categoryId}/todos`,
+    method: 'GET',
+  })
+  .done(function(data) {
+    $('.list-box').empty();
+    renderTodos(data);
+  })
+});
+
+
 });

@@ -34,6 +34,8 @@ return Promise.all([
 
   const productQuery = result[7].data;
 
+  const customBook = [ "read", "book" ];
+
 
   const film = destructureResults(filmQuery).concat(destructureResults(seeQuery));
   // console.log(film);
@@ -41,7 +43,7 @@ return Promise.all([
   const restaurant = destructureResults(restaurantQuery).concat(destructureResults(drinkQuery), destructureResults(eatQuery));
   // console.log(restaurant);
 
-  const book = destructureResults(bookQuery).concat(destructureResults(readQuery));
+  const book = destructureResults(bookQuery).concat(destructureResults(readQuery), customBook);
   // console.log(book);
 
   const product = destructureResults(productQuery);
