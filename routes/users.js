@@ -18,6 +18,14 @@ module.exports = (db) => {
 
   });
 
+  // This route is only to see what the return from the API query looks like
+  router.get("/show", (req, res) => {
+    getCategories()
+    .then(categories => {
+      res.send(categories);
+    });
+  })
+
   // ROUTER GET TODOS ARRANGED BY DATE CREATED ( DEFAULT )
   router.get("/todos", (req, res) => {
 
@@ -32,7 +40,6 @@ module.exports = (db) => {
     db.query(text)
       .then(data => {
         const todos = data.rows;
-        // console.log(todos);
         res.json(todos);
 
       })
@@ -48,7 +55,7 @@ module.exports = (db) => {
     SELECT description, date_due, priority, category_id, categories.name as category
     FROM todos
     JOIN categories ON todos.category_id = categories.id
-    ORDER BY priority DESC
+    ORDER BY priority ASC;
     ;`;
 
     db.query(text)
@@ -66,7 +73,7 @@ module.exports = (db) => {
     SELECT description, date_due, priority, category_id, categories.name as category
     FROM todos
     JOIN categories ON todos.category_id = categories.id
-    ORDER BY due_date DESC
+    ORDER BY date_due DESC
     ;`;
 
     db.query(text)
@@ -116,14 +123,18 @@ module.exports = (db) => {
 
   getCategories()
   .then(categories => {
+    const lowercaseDescription = description.toLowerCase();
     // Split String takes an array and separator (in this case it's space)
-    const descriptionArray = splitString(description, ' ');
+    const descriptionArray = splitString(lowercaseDescription, ' ');
     // - find out the category of the todo from extracted data
     let categoryResult = categoriesCheck(categories, descriptionArray);
 
+
+    // ******* WHAT DO I DO WHEN THE CATEGORY DOESN'T EXIST ????? **************
+    console.log(categoryResult);
     console.log("GENERIC LABEL: ", categoryResult);
     if (!categoryResult) {
-      categoryResult = 'Uncategorized'
+      categoryResult = 'uncategorized'
     }
 
     // QUERY THAT CHECKS WHAT THE CATEGORY ID IS WHEN GIVEN THE CATEGORY NAME

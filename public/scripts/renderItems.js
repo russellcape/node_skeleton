@@ -128,7 +128,7 @@ $( ".submit-todo" ).submit(function( event ) {
       const todoItem = createTodoItem(newTodo)
       console.log(todoItem);
       $('.list-box').prepend(createTodoItem(newTodo))
-
+      $(".submit-todo")[0].reset();
     })
 });
 
@@ -211,15 +211,31 @@ const loadNewTodos = function() {
 loadNewTodos()
 
 $('.side').click(function(event){
-  if ($(event.target).text() === 'Priorities');
-  $.ajax({
-    url: '/todos/priority',
-    method: 'GET'
-  })
-  .done(function(database) {
-    console.log(database);
-  })
+  if ($(event.target).text() === 'Priorities') {
+    $.ajax({
+      url: '/todos/priority',
+      method: 'GET'
+    })
+    .done(function(database) {
+      $('.list-box').empty();
+      renderTodos(database);
+      console.log("IS THIS: ", database);
+    })
+  }
+  if ($(event.target).text() === 'Due Date') {
+    $.ajax({
+      url: '/todos/due_date',
+      method: 'GET'
+    })
+    .done(function(database) {
+      $('.list-box').empty();
+      renderTodos(database);
+      console.log("IS THIS: ", database);
+    })
+  }
+
 });
+
 
 $('.cats').click(function(event) {
   const categoryId =  this.getAttribute("data-categoryId");
