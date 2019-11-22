@@ -18,6 +18,14 @@ module.exports = (db) => {
 
   });
 
+  // This route is only to see what the return from the API query looks like
+  router.get("/show", (req, res) => {
+    getCategories()
+    .then(categories => {
+      res.send(categories);
+    });
+  })
+
   // ROUTER GET TODOS ARRANGED BY DATE CREATED ( DEFAULT )
   router.get("/todos", (req, res) => {
 
@@ -32,7 +40,6 @@ module.exports = (db) => {
     db.query(text)
       .then(data => {
         const todos = data.rows;
-        // console.log(todos);
         res.json(todos);
 
       })
@@ -120,6 +127,9 @@ module.exports = (db) => {
     const descriptionArray = splitString(description, ' ');
     // - find out the category of the todo from extracted data
     let categoryResult = categoriesCheck(categories, descriptionArray);
+
+
+    // ******* WHAT DO I DO WHEN THE CATEGORY DOESN'T EXIST ????? **************
 
     console.log("GENERIC LABEL: ", categoryResult);
     if (!categoryResult) {
