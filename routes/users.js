@@ -23,8 +23,9 @@ module.exports = (db) => {
 
     // CHANGE QUERY TO GET CATEGORY NAME
     const text = `
-    SELECT id, description, date_due, priority, category_id
+    SELECT todos.id, description, date_due, priority, category_id, categories.name as category
     FROM todos
+    JOIN categories ON category_id = categories.id
     ORDER BY date_created;
     `;
 
@@ -44,8 +45,9 @@ module.exports = (db) => {
   router.get("/todos/priority", (req, res) => {
 
     const text = `
-    SELECT description, date_due, priority, category_id
+    SELECT description, date_due, priority, category_id, categories.name as category
     FROM todos
+    JOIN categories ON todos.category_id = categories.id
     ORDER BY priority DESC
     ;`;
 
@@ -58,13 +60,30 @@ module.exports = (db) => {
   });
 
   // ROUTER GET TODOS ARRANGED BY DUE DATE
+  router.get("/todos/due_date", (req, res) => {
+
+    const text = `
+    SELECT description, date_due, priority, category_id, categories.name as category
+    FROM todos
+    JOIN categories ON todos.category_id = categories.id
+    ORDER BY due_date DESC
+    ;`;
+
+    db.query(text)
+    .then(data => {
+      const todos = data.rows;
+      // console.log(todos);
+      res.json(todos);
+    });
+  });
+
   router.get("/categories/:id/todos", (req, res) => {
 
     // I WANT THE TODOS UNDER A CERTAIN CATEGORY
     // I can identify a todo of category X by it's category_id
     // I can get the id of a category by asking the categories table what is it's id
     const text = `
-    SELECT description, date_due, priority
+    SELECT description, date_due, priority, categories.name as category
     FROM todos
     JOIN categories ON todos.category_id = categories.id
     WHERE categories.id = $1
@@ -74,7 +93,7 @@ module.exports = (db) => {
 
     db.query(text, values)
     .then(data => {
-      const todos = data.rows[0];
+      const todos = data.rows;
       console.log("the category is currently: ", todos);
 
       res.json(todos);
@@ -100,7 +119,12 @@ module.exports = (db) => {
     // Split String takes an array and separator (in this case it's space)
     const descriptionArray = splitString(description, ' ');
     // - find out the category of the todo from extracted data
-    const categoryResult = categoriesCheck(categories, descriptionArray);
+    let categoryResult = categoriesCheck(categories, descriptionArray);
+
+    console.log("GENERIC LABEL: ", categoryResult);
+    if (!categoryResult) {
+      categoryResult = 'Uncategorized'
+    }
 
     // QUERY THAT CHECKS WHAT THE CATEGORY ID IS WHEN GIVEN THE CATEGORY NAME
     const text = `
@@ -119,12 +143,10 @@ module.exports = (db) => {
       RETURNING *
       `;
       const values = [1, data.rows[0].id, description, date_created, date_due, priority, false];
-      // const todos = data.rows[0];
 
       db.query(text, values)
       .then(data => {
         // send back response to the client (response is the new todo, with category)
-        console.log("THE NEXT STEP IS TO CHECK WHAT COMES BACK: ", data.rows[0]);
         return (data.rows[0]);
       })
       .then(newTodo => {
