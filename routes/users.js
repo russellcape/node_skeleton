@@ -130,10 +130,10 @@ module.exports = (db) => {
 
 
     // ******* WHAT DO I DO WHEN THE CATEGORY DOESN'T EXIST ????? **************
-
+    console.log(categoryResult);
     console.log("GENERIC LABEL: ", categoryResult);
     if (!categoryResult) {
-      categoryResult = 'Uncategorized'
+      categoryResult = 'uncategorized'
     }
 
     // QUERY THAT CHECKS WHAT THE CATEGORY ID IS WHEN GIVEN THE CATEGORY NAME
