@@ -3,6 +3,6 @@ $(() => {
 
   $("body").on("click", "save-btn", event => {
     event.preventDefault();
-    console.log("THIS IS WOKING PROPERLY");
+    console.log("IS THIS WORKING PROPERLY?");
   });
 });

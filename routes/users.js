@@ -55,7 +55,7 @@ module.exports = (db) => {
     SELECT description, date_due, priority, category_id, categories.name as category
     FROM todos
     JOIN categories ON todos.category_id = categories.id
-    ORDER BY priority DESC
+    ORDER BY priority ASC;
     ;`;
 
     db.query(text)
@@ -73,7 +73,7 @@ module.exports = (db) => {
     SELECT description, date_due, priority, category_id, categories.name as category
     FROM todos
     JOIN categories ON todos.category_id = categories.id
-    ORDER BY due_date DESC
+    ORDER BY date_due DESC
     ;`;
 
     db.query(text)
@@ -123,8 +123,9 @@ module.exports = (db) => {
 
   getCategories()
   .then(categories => {
+    const lowercaseDescription = description.toLowerCase();
     // Split String takes an array and separator (in this case it's space)
-    const descriptionArray = splitString(description, ' ');
+    const descriptionArray = splitString(lowercaseDescription, ' ');
     // - find out the category of the todo from extracted data
     let categoryResult = categoriesCheck(categories, descriptionArray);
 
