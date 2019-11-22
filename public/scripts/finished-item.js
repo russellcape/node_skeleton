@@ -1,8 +1,7 @@
 $(document).ready(function(){
 
-
   $('#exampleModal').on('show.bs.modal', function (event) {
-    const button = $(event.relatedTarget) // Button that triggered the modal
+    const button = $(event.relatedTarget.stopImmediatePropagation()) // Button that triggered the modal
     const recipient = button.data('whatever') // Extract info from data attributes
     $.ajax({
       url: '/todos',
@@ -18,5 +17,12 @@ $(document).ready(function(){
     modal.find('.modal-title').text('New message to ' + recipient)
     modal.find('.modal-body input').val(recipient)
   })
+
+  $('.edit-btn').click(function(event) {
+    event.stopImmediatepropegation();
+    console.log("button pressed")
+  })
+
+
 
 });

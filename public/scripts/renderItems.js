@@ -64,7 +64,7 @@ const createTodoItem = function(todo) {
   let editIcon = $(`<i>`).addClass('fas fa-edit')
   let eraserIcon = $(`<i>`).addClass('fas fa-eraser')
   let checkBtn = $(`<button>`).addClass('check-btns')
-  let span = $(`<span>`).text([`${todo.description}, -----Priority-----> ${todo.priority}, -----Category-----> ${todo.category}`])
+  let span = $(`<span>`).addClass('todo-text').text([`${todo.description}, -----Priority-----> ${todo.priority}, -----Category-----> ${todo.category}`])
   let editBtn = $(`<button>`).addClass('edit-btn').attr({
     "data-toggle": "modal",
     type: "button",
@@ -73,7 +73,6 @@ const createTodoItem = function(todo) {
   })
   let deleteBtn = $(`<button>`).addClass('delete-btn')
   let listItem = $(`<li>`).addClass('list-item').attr("id", todo.id)
-
   // // Split 1
   modalTodoLabel.appendTo(editTodoDiv)
   editTodoInput.appendTo(editTodoDiv)
@@ -98,8 +97,8 @@ const createTodoItem = function(todo) {
 
   checkIcon.appendTo(checkBtn)
   checkBtn.appendTo(listItem)
-  span.appendTo(listItem)
   modalOutterDiv.appendTo(listItem)
+  span.appendTo(listItem)
   eraserIcon.appendTo(deleteBtn)
   deleteBtn.appendTo(listItem)
   editBtn.appendTo(listItem)
